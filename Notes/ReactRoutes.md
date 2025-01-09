@@ -101,7 +101,7 @@ export default function Room() {
 The route parameter can also be accessed in the loader because of the way the route is defined (params is related to the parent wrapper component / Route).
 
 
-#### Loader
+## Loader
 
 We want to load data to a component before it is rendered. The loader function can be linked to an API fetch. Allows to do so without explicitely adding a useEffect hook (local state) in the target component. We instead define a loader function inside the component / route file.
 
