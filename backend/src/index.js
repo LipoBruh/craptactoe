@@ -14,8 +14,8 @@ res.send("response")
 //first arg is options, second is our express app
 const sslServer = https.createServer(
     {
-        key:"",
-        cert:''
+        key: fs.readFileSync(path.join(__dirname,'cert','key.pem')),
+        cert:fs.readFileSync(path.join(__dirname,'cert','cert.pem'))
     },
     app)
 //port and callback

@@ -1,4 +1,4 @@
-#HTTPS
+# HTTPS
 
 ## Notes: 
 
@@ -21,6 +21,13 @@ https://www.youtube.com/watch?v=USrMdBF0zcg
 Vague explaination of explaination of cipher and modes available on openSSL
 https://www.youtube.com/watch?v=hGrd4CqXw1U
 
+Very much too in depth tutorial playlist about openSSL and nothing else
+https://www.youtube.com/watch?v=O1OaJmrRHrw&list=PLgBMtP0_D_afzNG7Zs2jr8FSoyeU4yqhi
+
+#### Free DNS providers:
+
+https://desec.io/
+https://freedns.afraid.org/
 
 ## OpenSSL
 
@@ -57,13 +64,36 @@ Generating a private key with openSSL can be done with the following command in 
 
 `openssl genrsa -out key.pem 2048`
 
-The key will be output to the key.pem file in the directory and can be used in pair with a generate certificate signing request to be signed by a certificate authority. The returned certificate contains the public key. The public key is derived from the private key, which is why only the private key is generated at first.
+The key will be output to the key.pem file in the directory and can be used in pair with a generate certificate signing request to be signed by a certificate authority. 
+
+
+
+#### Certificates
+
+We need to generate a certificate signing request (CSR) :
+
+`openssl req -new -key key.pem -out csr.pem`
+
+Generate a mock / self signed SSL certificate for development: 
+
+`openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out cert.pem`
+
+
+
+The returned certificate contains the public key. The public key is derived from the private key, which is why only the private key is generated at first.
 
 For the CA to validate our CSR, we need to go through domain validation. LetsEncrypt is a CA that is free and can process domain validation and return a signed certificate. Our authentication is done by signing a nonce with the PK (may be dependent on certbox).
 
 Additionnal details : 
+
+Configurate Let's encrypt with a Github container:
 https://www.youtube.com/watch?v=jrR_WfgmWEw
 https://github.com/marcel-dempers/docker-development-youtube-series/tree/master/security/letsencrypt/introduction
+
+
+
+## Express setup 
+
 
 In the backend express app, a usual way to setup the HTTPS / TLS / SSL handshake would be with this boilerplate code.
 
