@@ -19,4 +19,4 @@ const sslServer = https.createServer(
     },
     app)
 //port and callback
-app.listen(port,()=>console.log(`https server open on port ${port}`))
+sslServer.listen(port,()=>console.log(`https server open on port ${port}`))

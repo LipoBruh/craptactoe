@@ -28,6 +28,8 @@ Each  `<Route>` can have a `path="/"` prop and `element={<Layout/>}` prop.
 Based on `createrBrowserRouter` that is the recommended way to manage routes.
 https://www.youtube.com/watch?v=oTIJunBa6MA
 https://www.youtube.com/watch?v=OMQ2QARHPo0&list=PL4cUxeGkcC9iVKmtNuCeIswnQ97in2GGf&index=1
+https://reactrouter.com/start/framework/routing
+
 
 ```js
 //main.jsx
