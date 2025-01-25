@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@react-three/fiber": "^8.17.12",
+    "@types/three": "^0.172.0",
+    "three": "^0.172.0"
+  }
+}

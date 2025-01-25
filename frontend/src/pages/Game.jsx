@@ -1,6 +1,6 @@
 import React from 'react'
 import * as THREE from 'three';
-import ThreeComponent from "../components/ThreeComponent.jsx"
+import ThreeComponent from "../three/ThreeComponent.jsx"
 
 export default function Game() {
   return (
