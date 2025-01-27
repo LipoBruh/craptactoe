@@ -266,8 +266,8 @@ const Cube = ({position,scale,color})=>{
             onPointerLeave={(event)=>(event.stopPropagation(),setIsHovered(False))} 
             onClick={() => setIsClicked(!isClicked)}>
 
-                <boxGeometry args={scale}>
-                <meshStandardMaterial color={isHovered? color : "grey"}>
+                <boxGeometry args={scale}/>
+                <meshStandardMaterial color={isHovered? color : "grey"}/>
         </mesh>
     )
 }
