@@ -8,6 +8,7 @@ https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene
 # REACT-THREE-FIBER
 https://r3f.docs.pmnd.rs/getting-started/introduction
 https://r3f.docs.pmnd.rs/getting-started/installation#react-native
+https://www.youtube.com/watch?v=vTfMjI4rVSI
 
 
 
