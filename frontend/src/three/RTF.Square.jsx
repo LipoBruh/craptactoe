@@ -5,9 +5,14 @@ import SquareClick from "../logic/SquareClick"
 const Square = ({position,scale=[1.5,0.5,1.5],color="blue", id})=>{
     //
     const [isHovered, setIsHovered] = useState(false)
-    const [isClicked, setIsClicked] = useState(false)
+    const [isBlocked, setBlocked] = useState(false)
     //
-    const delegateClick = ()=>{ SquareClick(id)}
+    const delegateClick = ()=>{ 
+                                if(!isBlocked && SquareClick(id)){
+                                    console.log("trace")
+                                    setBlocked(true)
+                                }
+                            }
     // 
     return(
         <mesh 
@@ -17,7 +22,7 @@ const Square = ({position,scale=[1.5,0.5,1.5],color="blue", id})=>{
             onClick={() => delegateClick()}>
 
                 <boxGeometry args={scale}/>
-                <meshStandardMaterial color={color} opacity={isHovered ? 0.3 : 0} transparent/>
+                <meshStandardMaterial color={isBlocked?"red":color} opacity={isHovered ? (isBlocked?0:0.3) : 0} transparent/>
         </mesh>
     )
 }

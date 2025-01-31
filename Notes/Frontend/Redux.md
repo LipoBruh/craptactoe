@@ -1,8 +1,9 @@
 # REDUX
 
 #### Installation
-
-`npm install @reduxjs/toolkit react-redux`
+`npm install redux` Old syntax
+`npm install @reduxjs/toolkit react-redux` The toolkit uses the more recent syntax
+`npm install redux-thunk`
 
 #### Notes
 
@@ -20,10 +21,10 @@ The reducer acts as the event handler : it gets its current store attribute and 
 
 
 #### Ressources
-
+Basics:
 https://www.youtube.com/watch?v=poQXNp9ItL4
-
-
+toolkit:
+https://www.youtube.com/watch?v=0awA5Uw6SJE&list=PLC3y8-rFHvwiaOAuTtVXittwybYIorRB3
 
 ## Reducers
 
@@ -49,7 +50,7 @@ export default function reducer(state = [],action){
 
 
 ## Store
-
+There should be only be one store necessary to a project. It centralizes all of the states in one object. The reducer used in `createStore(reducer)` should be the root reducer, it being the reducer that wraps all of your smaller reducers.
 
 Create the store :
 
@@ -131,3 +132,52 @@ export default function reducer(state = [],action){
     }
     return state
 }
+```
+
+## Thunks
+
+Redux Thunk is a middleware that allows Redux action creators to return a function instead of just an action object. By default, Redux actions must be plain objects, they cannot handle async logic. This is fine only if data is immediately available, but API requests can induce delays. Thunk allow async operations and dispatch once data is acquired.
+
+This enables asynchronous operations like:
+- Fetching data from an API before dispatching an action.
+- Performing side effects (logging, caching, etc.).
+- Dispatching multiple actions in sequence.
+
+Usage - We need to alter the store / createStore by passing a second argument:
+
+```js
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import rootReducer from "./reducers";
+
+const store = createStore(rootReducer, applyMiddleware(thunk)); //<- Here
+export default store;
+```
+
+
+
+## Access the state 
+
+Outside of react components:
+```js
+import store from "../redux/root.store"
+
+const state = store.getState();
+```
+
+
+Inside of react components:
+```js
+import { useSelector } from 'react-redux';
+
+const SquareClick = (id)=>{
+
+    const user = useSelector(state => state.gameData.player1.name);
+
+    return ({/* ...  */})
+}
+```
+
+
+## Dispatch a state modification
+

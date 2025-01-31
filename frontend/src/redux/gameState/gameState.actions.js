@@ -1,17 +1,17 @@
 import * as actions from './gameState.actionTypes'
 
-export const gameState_put_generator = ([row,column], symbol) => (
+const gameState_move_put_generator = ([row,column], symbol) => (
     {
         type: actions.GAME_PUT,
         payload: {
             symbol : symbol,
             row : row ,
-            column : column
+            col : column
         }
     }
 )
 
-export const gameState_set_generator = (board) => (
+const gameState_set_generator = (board) => (
     {
         type: actions.GAME_CONNECT,
         payload: {
@@ -20,7 +20,7 @@ export const gameState_set_generator = (board) => (
     }
 )
 
-export const gameState_connection_generator = (connection) => (
+const gameState_connection_generator = (connection) => (
     {
         type: actions.GAME_CONNECT,
         payload: {
@@ -28,3 +28,10 @@ export const gameState_connection_generator = (connection) => (
         }
     }
 )
+
+export default {
+    gameState_move_put_generator,
+    gameState_set_generator,
+    gameState_connection_generator,
+
+}
