@@ -11,7 +11,7 @@ const initialGameState = {
         [null, null, null],
     ],
     gameStatus: GAME_STATE1,
-    online: true
+    online: null
 };
 
 
@@ -76,6 +76,13 @@ export default function gameState_reducer(state = initialGameState,action){
             ...state,
             board: action.payload.board,
             gameStatus: win(action.payload.board)?GAME_STATE2:GAME_STATE1
+        };
+    }
+    else if (action.type==actions.MODE_PUT){
+        
+        return {
+            ...state,
+            online: action.payload.online
         };
     }
     //verification of the connectivity should be elaborated here
