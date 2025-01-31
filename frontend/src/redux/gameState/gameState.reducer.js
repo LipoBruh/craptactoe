@@ -34,7 +34,9 @@ const win_row = ([a,b,c]) =>{
     return a == b && a == c
 }
 
-
+function newBoardFx([row1,row2,row3]){
+    return [row1,row2,row3]
+}
 
 //returns an altered state
 export default function gameState_reducer(state = initialGameState,action){
@@ -50,7 +52,7 @@ export default function gameState_reducer(state = initialGameState,action){
                 //
                 console.log(`${row},${col} and symbol ${action.payload.symbol}`)
                 //
-                let newBoard = state.board
+                let newBoard = newBoardFx(state.board)
                 newBoard[row][col]=action.payload.symbol
                 //
                 let gameStatus = win(newBoard)?GAME_STATE2:GAME_STATE1
