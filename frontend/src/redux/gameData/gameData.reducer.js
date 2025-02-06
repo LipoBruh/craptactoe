@@ -1,9 +1,9 @@
 import * as actionTypes from "./gameData.actionTypes";
 
 const initialDataState = {
-    myName:"null",
-    turn: "null",
-    player1: {name:"null",id:null,symbol:"x"},
+    myName:null,
+    turn: null,
+    player1: {name:null,id:null,symbol:"x"},
     player2: {name:null,id:null,symbol:"o"},
     room: {name:null,id:null},
 }
@@ -43,11 +43,21 @@ export default function gameData_reducer(state = initialDataState, action) {
                 room : {...state.room, name: action.payload.name}
             };
 
-            case actionTypes.TURN_PUT:  //we want to overwrite room name
+        case actionTypes.TURN_PUT: 
             return {
                 ...state,
-                turn : action.payload.name
+                turn : action.payload.turn
             };
+
+        case actionTypes.INIT:  
+            return {
+                ...state,
+                ...action.payload
+            };        
+        case actionTypes.DATA_GET:  
+            return {
+                ...state,
+            };        
 
         default:
             return state;

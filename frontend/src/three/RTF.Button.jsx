@@ -1,14 +1,13 @@
 import React from 'react'
-import ButtonClick from '../logic/ButtonClick'
-import { useSelector } from 'react-redux';
 import store from '../redux/root.store';
 
-const Button = ({children,position=[0,0],mode=null} )=>{
+const Button = ({children,position=[0,0], onClickFX=(()=>{})} )=>{
 
     const state = store.getState();
     const [x,y] = position
+    //
     const delegateButtonClick = ()=>{
-        ButtonClick(mode)
+        onClickFX()
         console.log( state.gameState.online)
     }
 

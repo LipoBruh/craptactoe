@@ -23,12 +23,12 @@ const SquareClick = (id)=>{
         //step 3 : check if game is over
         if(!isGameFinished()){ 
             //step 4 : update local state 
-            console.log("on_going")
+            //console.log("on_going")
             const symbol = mySymbol() // fetch player appropriate symbol
-            console.log(symbol)
+            //console.log(symbol)
             if (symbol){
                 //
-                store.dispatch(actions2.gameData_end_turn_generator()) //ends the turn
+                store.dispatch(actions2.gameData_end_turn_generator(null)) //ends the turn
 
                 let final_state = store.dispatch(actions1.gameState_move_put_generator(id,symbol)) //updates state
 

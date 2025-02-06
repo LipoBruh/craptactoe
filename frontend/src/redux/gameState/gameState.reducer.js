@@ -1,4 +1,5 @@
 import * as actions from './gameState.actionTypes'
+export const GAME_STATE0 = "notstarted"
 export const GAME_STATE1 = "ongoing"
 export const GAME_STATE2 = "finished"
 
@@ -10,7 +11,7 @@ const initialGameState = {
         [null, null, null],
         [null, null, null],
     ],
-    gameStatus: GAME_STATE1,
+    gameStatus: GAME_STATE0,
     online: null
 };
 
@@ -87,6 +88,22 @@ export default function gameState_reducer(state = initialGameState,action){
             online: action.payload.online
         };
     }
+    else if (action.type==actions.MODE_PUT){
+        
+        return {
+            ...state,
+            online: action.payload.online
+        };
+    }
+    else if (action.type==actions.INIT){
+        
+        return {
+            ...state,
+            ...action.payload
+        };
+    }
+
+
     //verification of the connectivity should be elaborated here
     else if(action.type==actions.GAME_CONNECT){
         if(actions.payload.connectionStatus){

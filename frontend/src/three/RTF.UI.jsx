@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from './RTF.Button'
 import { useSelector } from 'react-redux';
-import * as types from '../redux/gameState/gameState.actionTypes'
+import {init_offline_states, init_online_states} from "../logic/InitiateStates"
 
 const UI = ()=>{
 
@@ -11,10 +11,10 @@ const UI = ()=>{
     <>
     {mode?<></>:
         <>  
-        <Button position={[40,80]} mode={types.MODE1}>
+        <Button position={[40,80]} onClickFX={init_offline_states}>
             Offline
         </Button>
-        <Button position={[150,80]} mode={types.MODE2}>
+        <Button position={[150,80]} onClickFX={init_online_states}>
             Online
         </Button>
         </>  

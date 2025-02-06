@@ -21,7 +21,7 @@ export default function RTFComponent() {
             <Canvas className="absolute inset-0">
                 <Scene/> 
                 {mode?<NineSquares/>:<></>}
-                {mode?<OrbitControls />:<ChangeCameraPosition />}
+                {mode?<OrbitControls/>:<ChangeCameraPosition />}
             </Canvas>
         </div>
         </>
@@ -37,7 +37,7 @@ function ChangeCameraPosition() {
     useFrame(({ clock }) => {
         //
         setTime(clock.getElapsedTime()); //store with useState
-        camera.position.set(20*Math.cos(0.5 *time), 15, 20*Math.cos(0.05*time));
+        camera.position.set(20*Math.cos(0.15 *time), 15, 20*Math.sin(0.15*time));
         camera.lookAt(0, 0, 0);
     });
 
